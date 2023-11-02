@@ -73,7 +73,7 @@ public class Dealership {
         ArrayList<Vehicle> filteredArray = new ArrayList<>();
 
         for(Vehicle x:inventory){
-            if (x.getPrice()>=min && x.getPrice()<=max){
+            if (x.getYear()>=min && x.getYear()<=max){
                 filteredArray.add(x);
             }
         }
@@ -83,7 +83,7 @@ public class Dealership {
         ArrayList<Vehicle> filteredArray = new ArrayList<>();
 
         for(Vehicle x:inventory){
-            if (x.getMake().equalsIgnoreCase(color) ){
+            if (x.getColor().equalsIgnoreCase(color) ){
                 filteredArray.add(x);
             }
         }
@@ -93,7 +93,7 @@ public class Dealership {
         ArrayList<Vehicle> filteredArray = new ArrayList<>();
 
         for(Vehicle x:inventory){
-            if (x.getPrice()>=min && x.getPrice()<=max){
+            if (x.getOdometer()>=min && x.getOdometer()<=max){
                 filteredArray.add(x);
             }
         }
@@ -104,7 +104,7 @@ public class Dealership {
         ArrayList<Vehicle> filteredArray = new ArrayList<>();
 
         for(Vehicle x:inventory){
-            if (x.getMake().equalsIgnoreCase(type) ){
+            if (x.getVehicleType().equalsIgnoreCase(type) ){
                 filteredArray.add(x);
             }
         }

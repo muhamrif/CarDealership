@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private static Dealership dealership;
+    static Scanner input = new Scanner(System.in);
 
 //__________________________
 
@@ -26,33 +27,62 @@ public class UserInterface {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         dealership = dealershipFileManager.getDealership();
     }
+    private static void updateDealership(){
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.saveDealership(dealership);
+    }
+
+
     public void display(){
         init();
         displayMenu();
     }
 
     public static void processGetByPriceRequest(){
-
+        System.out.println("enter min:");
+        Double min = Double.parseDouble(input.next());
+        System.out.println("enter max:");
+        Double max = Double.parseDouble(input.next());
+        displayHelper(dealership.getVehicleByPrice(min, max));
     }
 
     public static void processGetByMakeModelRequest(){
+        System.out.println("enter make:");
+        String make = input.next();
+        System.out.println("enter model:");
+        String model = input.next();
+        displayHelper(dealership.getVehicleByMakeModel(make, model));
 
     }
 
     public static void processGetByYearRequest(){
+        System.out.println("enter min:");
+        int min = Integer.parseInt(input.next());
+        System.out.println("enter max:");
+        int max = Integer.parseInt(input.next());
+        displayHelper(dealership.getVehicleByYear(min, max));
 
     }
 
     public static void processGetByColorRequest(){
-
+        System.out.println("enter color:");
+        String color = input.next();
+        System.out.println(color);
+        displayHelper(dealership.getVehicleByColor(color));
     }
 
     public static void processGetByMileageRequest(){
-
+        System.out.println("enter min:");
+        int min = Integer.parseInt(input.next());
+        System.out.println("enter max:");
+        int max = Integer.parseInt(input.next());
+        displayHelper(dealership.getVehicleByMileage(min, max));
     }
 
     public static void processGetByVehicleTypeRequest(){
-
+        System.out.println("enter vehicle type:");
+        String type = input.next();
+        displayHelper(dealership.getVehicleByType(type));
     }
 
     public static void processGetAllVehicleRequest(){
@@ -60,11 +90,38 @@ public class UserInterface {
     }
 
     public static void processAddVehicleRequest(){
+        System.out.println("enter vin:");
+        int vin = Integer.parseInt(input.next());
+        System.out.println("enter year:");
+        int year = Integer.parseInt(input.next());
+        System.out.println("enter make:");
+        String make = input.next();
+        System.out.println("enter model:");
+        String model = input.next();
+        System.out.println("enter vehicle type:");
+        String vehicleType = input.next();
+        System.out.println("enter color:");
+        String color = input.next();
+        System.out.println("enter odometer:");
+        int odometer = Integer.parseInt(input.next());
+        System.out.println("enter price:");
+        Double price = Double.valueOf(input.next());
 
+        Vehicle vehicle = new Vehicle(vin,year, make, model, vehicleType, color, odometer, price);
+        dealership.addVehicle(vehicle);
     }
 
     public static void processRemoveVehicleRequest(){
+        System.out.println("enter the vin of the vehicle you want to remove: ");
+        int vin = Integer.parseInt(input.next());
 
+        for (Vehicle x: dealership.getAllVehicle()){
+            if (x.getVin()==vin){
+                dealership.removeVehicle(x);
+                System.out.println("vehicle is removed " + x.toString());
+            }
+        }
+        updateDealership();
     }
 
     public static void displayMenu(){
@@ -127,7 +184,7 @@ public class UserInterface {
 
     private static void displayHelper(ArrayList listToBeDisplayed){
         for (Object vehicle: listToBeDisplayed){
-            System.out.println(vehicle.toString());
+            System.out.println(vehicle);
         }
     }
 
