@@ -48,12 +48,12 @@ public class DealershipFileManager {
         String dealershipName= String.format("%1s|%1s|%1s", dealership.getName(),dealership.getAddress(),dealership.getPhone());
         try{
             BufferedWriter nameWriter = new BufferedWriter(new FileWriter("inventory.csv"));
-            nameWriter.write(dealershipName);
+            nameWriter.write(dealershipName+"\n");
             nameWriter.close();
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv",true));
                 for(Vehicle x:dealership.getAllVehicle()){
-                    String vehicleFormat = x.getVin()+"|"+x.getYear()+"|"+x.getMake()+"|"+x.getModel()+"|"+x.getVehicleType()+"|"+x.getColor()+"|"+x.getOdometer()+"|"+x.getPrice();
+                    String vehicleFormat = x.getVin()+"|"+x.getYear()+"|"+x.getMake()+"|"+x.getModel()+"|"+x.getVehicleType()+"|"+x.getColor()+"|"+x.getOdometer()+"|"+x.getPrice()+"\n";
                     writer.write(vehicleFormat);
                 }
                 writer.close();

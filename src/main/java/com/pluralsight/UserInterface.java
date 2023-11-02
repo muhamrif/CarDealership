@@ -109,6 +109,8 @@ public class UserInterface {
 
         Vehicle vehicle = new Vehicle(vin,year, make, model, vehicleType, color, odometer, price);
         dealership.addVehicle(vehicle);
+        System.out.println("vehicle is added " + vehicle);
+        updateDealership();
     }
 
     public static void processRemoveVehicleRequest(){
@@ -118,7 +120,7 @@ public class UserInterface {
         for (Vehicle x: dealership.getAllVehicle()){
             if (x.getVin()==vin){
                 dealership.removeVehicle(x);
-                System.out.println("vehicle is removed " + x.toString());
+                System.out.println("vehicle is removed " + x);
             }
         }
         updateDealership();
