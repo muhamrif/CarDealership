@@ -5,10 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class DealershipFileManager {
-    private DealershipFileManager() {
-    }
 
-    public static Dealership getDealership(){
+
+    public Dealership getDealership(){
         Dealership dealership = new Dealership("","","");
 
         int lineCounter = 1;
@@ -18,12 +17,11 @@ public class DealershipFileManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split("\\|");
-                if(lineCounter==1){
+                if(lineCounter<=1){
                 dealership.setName(tokens[0]);
                 dealership.setAddress(tokens[1]);
                 dealership.setPhone(tokens[2]);
-                }
-                if(lineCounter>1){
+                }else {
                    int vin = Integer.parseInt(tokens[0]);
                     int year = Integer.parseInt(tokens[1]);
                     String make = tokens[2];
@@ -45,10 +43,10 @@ public class DealershipFileManager {
             System.err.print(e);
         }
 
-        return null;
+        return dealership;
     };
 
-    public static void saveDealership(Dealership dealership){
+    public void saveDealership(Dealership dealership){
 
     };
 }
