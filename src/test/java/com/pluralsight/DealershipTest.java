@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 public class DealershipTest {
 
-    private List<Vehicle> inventory; // Private attribute to hold the test data
+    private List<Vehicle> inventory;
 
     @BeforeEach
     public void setUp() {
-        // Initialize the inventory with sample vehicles
         inventory = new ArrayList<>();
         inventory.add(new Vehicle(1, 2020, "Toyota", "Camry", "Sedan", "Red", 10000, 20000.0));
         inventory.add(new Vehicle(2, 2021, "Honda", "Civic", "Sedan", "Blue", 8000, 25000.0));
@@ -67,7 +66,6 @@ public class DealershipTest {
         assertTrue(filteredArray.isEmpty());
     }
 
-    // Add similar tests for the other methods
 
     private List<Vehicle> getVehicleByPrice(double min, double max) {
         List<Vehicle> filteredArray = new ArrayList<>();
