@@ -1,11 +1,12 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private static Dealership dealership;
-    static Scanner input = new Scanner(System.in);
+    private Dealership dealership;
+     Scanner input = new Scanner(System.in);
 
 //__________________________
 
@@ -27,7 +28,7 @@ public class UserInterface {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         dealership = dealershipFileManager.getDealership();
     }
-    private static void updateDealership(){
+    private void updateDealership(){
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         dealershipFileManager.saveDealership(dealership);
     }
@@ -38,7 +39,7 @@ public class UserInterface {
         displayMenu();
     }
 
-    public static void processGetByPriceRequest(){
+    public void processGetByPriceRequest(){
         System.out.println("enter min:");
         Double min = Double.parseDouble(input.next());
         System.out.println("enter max:");
@@ -46,7 +47,7 @@ public class UserInterface {
         displayHelper(dealership.getVehicleByPrice(min, max));
     }
 
-    public static void processGetByMakeModelRequest(){
+    public void processGetByMakeModelRequest(){
         System.out.println("enter make:");
         String make = input.next();
         System.out.println("enter model:");
@@ -55,7 +56,7 @@ public class UserInterface {
 
     }
 
-    public static void processGetByYearRequest(){
+    public void processGetByYearRequest(){
         System.out.println("enter min:");
         int min = Integer.parseInt(input.next());
         System.out.println("enter max:");
@@ -64,14 +65,14 @@ public class UserInterface {
 
     }
 
-    public static void processGetByColorRequest(){
+    public void processGetByColorRequest(){
         System.out.println("enter color:");
         String color = input.next();
         System.out.println(color);
         displayHelper(dealership.getVehicleByColor(color));
     }
 
-    public static void processGetByMileageRequest(){
+    public void processGetByMileageRequest(){
         System.out.println("enter min:");
         int min = Integer.parseInt(input.next());
         System.out.println("enter max:");
@@ -79,17 +80,17 @@ public class UserInterface {
         displayHelper(dealership.getVehicleByMileage(min, max));
     }
 
-    public static void processGetByVehicleTypeRequest(){
+    public void processGetByVehicleTypeRequest(){
         System.out.println("enter vehicle type:");
         String type = input.next();
         displayHelper(dealership.getVehicleByType(type));
     }
 
-    public static void processGetAllVehicleRequest(){
+    public void processGetAllVehicleRequest(){
     displayHelper(dealership.getAllVehicle());
     }
 
-    public static void processAddVehicleRequest(){
+    public void processAddVehicleRequest(){
         System.out.println("enter vin:");
         int vin = Integer.parseInt(input.next());
         System.out.println("enter year:");
@@ -113,7 +114,7 @@ public class UserInterface {
         updateDealership();
     }
 
-    public static void processRemoveVehicleRequest(){
+    public void processRemoveVehicleRequest(){
         System.out.println("enter the vin of the vehicle you want to remove: ");
         int vin = Integer.parseInt(input.next());
 
@@ -126,7 +127,7 @@ public class UserInterface {
         updateDealership();
     }
 
-    public static void displayMenu(){
+    public void displayMenu(){
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
         while (running) {
@@ -184,8 +185,8 @@ public class UserInterface {
     }
 
 
-    private static void displayHelper(ArrayList listToBeDisplayed){
-        for (Object vehicle: listToBeDisplayed){
+    private void displayHelper(List<Vehicle> listToBeDisplayed){
+        for (Vehicle vehicle: listToBeDisplayed){
             System.out.println(vehicle);
         }
     }
