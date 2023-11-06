@@ -154,7 +154,7 @@ public class UserInterface {
         while (vin == -1) {
             System.out.print("Enter vin:\uD83D\uDC49\uD83C\uDFFD ");
             try {
-                vin = Integer.parseInt(input.next());
+                vin = Integer.parseInt(input.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input for VIN. Please enter a valid integer(s) ONLY.");
             }
@@ -162,7 +162,7 @@ public class UserInterface {
         while (year == -1) {
             System.out.print("Enter year: \uD83D\uDC49\uD83C\uDFFD");
             try {
-                year = Integer.parseInt(input.next());
+                year = Integer.parseInt(input.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input for year. Please enter a valid integer(s) ONLY.");
             }
@@ -170,7 +170,7 @@ public class UserInterface {
 
         while (make == null) {
             System.out.print("Enter make:\uD83D\uDC49\uD83C\uDFFD ");
-            make = input.next();
+            make = input.nextLine();
             if (make.contains("|")) {
                 System.out.println("Make cannot contain a pipe character (|)");
                 make = null;
@@ -179,7 +179,7 @@ public class UserInterface {
 
         while (model == null) {
             System.out.print("Enter model: \uD83D\uDC49\uD83C\uDFFD");
-            model = input.next();
+            model = input.nextLine();
             if (model.contains("|")) {
                 System.out.println("Model cannot contain a pipe character (|)");
                 model = null;
@@ -188,7 +188,7 @@ public class UserInterface {
 
         while (vehicleType == null) {
             System.out.print("Enter vehicle type:\uD83D\uDC49\uD83C\uDFFD ");
-            vehicleType = input.next();
+            vehicleType = input.nextLine();
             if (vehicleType.contains("|")) {
                 System.out.println("Vehicle type cannot contain a pipe character (|)");
                 vehicleType = null;
@@ -197,7 +197,7 @@ public class UserInterface {
 
         while (color == null) {
             System.out.print("Enter color:\uD83D\uDC49\uD83C\uDFFD ");
-            color = input.next();
+            color = input.nextLine();
             if (color.contains("|")) {
                 System.out.println("Color cannot contain a pipe character (|)");
                 color = null;
@@ -207,7 +207,7 @@ public class UserInterface {
         while (odometer == -1) {
             System.out.print("Enter odometer:\uD83D\uDC49\uD83C\uDFFD ");
             try {
-                odometer = Integer.parseInt(input.next());
+                odometer = Integer.parseInt(input.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input for odometer. Please enter a valid integer(s) ONLY.");
             }
@@ -216,7 +216,7 @@ public class UserInterface {
         while (price == -1.0) {
             System.out.print("Enter price:\uD83D\uDC49\uD83C\uDFFD ");
             try {
-                price = Double.parseDouble(input.next());
+                price = Double.parseDouble(input.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input for price. Please enter a valid number ONLY");
             }
@@ -265,7 +265,7 @@ public class UserInterface {
 
 
             System.out.print("Your Selection \uD83D\uDC49\uD83C\uDFFD");
-            String input = scanner.next().trim();
+            String input = scanner.nextLine().trim();
 
             switch (input) {
                 case "1":
