@@ -154,7 +154,7 @@ public class UserInterface {
         while (vin == -1) {
             System.out.print("Enter vin:\uD83D\uDC49\uD83C\uDFFD ");
             try {
-                vin = Integer.parseInt(input.nextLine());
+                vin = Integer.parseInt(input.next());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input for VIN. Please enter a valid integer(s) ONLY.");
             }
@@ -232,17 +232,22 @@ public class UserInterface {
         System.out.println("enter the vin of the vehicle you want to remove:\uD83D\uDC49\uD83C\uDFFD ");
         int vin = Integer.parseInt(input.next());
         int counter = 0;
-        for (Vehicle x: dealership.getAllVehicle()){
+        List<Vehicle> allVehicle = new ArrayList<>(dealership.getAllVehicle());
+        for (Vehicle x: allVehicle){
             if (x.getVin()==vin){
-                dealership.removeVehicle(x);
-                System.out.println("vehicle is removed " + x);
-                counter++;
+                try{
+                    dealership.removeVehicle(x);
+                    System.out.println("vehicle is removed " + x);
+                    updateDealership();
+                    counter++;
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+
             }
         }
         if (counter==0) {
             System.out.println("VIN not found! NO vehicle removed!");
-        }else{
-            updateDealership();
         }
 
     }
@@ -297,7 +302,6 @@ public class UserInterface {
                     break;
 
                 case "99":
-
                     running=false;
                     break;
             }
